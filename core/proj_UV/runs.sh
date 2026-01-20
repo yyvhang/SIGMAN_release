@@ -1,0 +1,1 @@
+python main.py --config configs/revani.yaml --start 0 --end 10 --save_wrong wrong.npy text_dir=True
