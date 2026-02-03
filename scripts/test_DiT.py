@@ -31,15 +31,12 @@ IMAGENET_DEFAULT_MEAN = (0.485, 0.456, 0.406)
 IMAGENET_DEFAULT_STD = (0.229, 0.224, 0.225)
 
 def _parse_cli():
-    """
-    额外解析本脚本特有参数（如 image/pose 文件路径），其余参数继续交给 tyro/AllConfigs。
-    """
+
     parser = argparse.ArgumentParser(add_help=False)
     parser.add_argument("--image_path", type=str, default="./demo/images/demo.jpg")
     parser.add_argument("--pose_path", type=str, default="./demo/poses/smplx_demo.npz")
     known, remaining = parser.parse_known_args(sys.argv[1:])
 
-    # AllConfigs 是 tyro 的 subcommand 类型，必须用剩余 argv 继续解析
     opt = tyro.cli(AllConfigs, args=remaining)
     return opt, known
 
