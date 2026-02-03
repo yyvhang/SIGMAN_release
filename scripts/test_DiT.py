@@ -17,7 +17,7 @@ from PIL import Image
 from core.model_config.DiT_DDPM import AllConfigs
 from core.modules.DiT_utils import Load_VAE, Render
 from core.modules.DiT import DiT3DModel
-from core.dataset.dataloader_test import ObjaverseDataset as Dataset
+from core.dataset.dataloader_test import HGS_1M as Dataset
 from core.loss.eval import eval_metrics
 from core.modules.sample_pipeline.DDPM_sample_pipeline import SamplesPipeline
 from diffusers.utils.torch_utils import is_compiled_module
@@ -235,7 +235,7 @@ def inference():
         use_rotary_positional_embeddings=opt.use_rotary_positional_embeddings,
         use_learned_positional_embeddings=opt.use_learned_positional_embeddings,
     )
-    scheduler = CogVideoXDDIMScheduler.from_pretrained(opt.DiT_pretrain, subfolder="scheduler")
+    scheduler = CogVideoXDDIMScheduler.from_pretrained("./core", subfolder="scheduler")
     renderer = Render(opt)
     image_encoder = load_model('.ckpt/sapiens_1b/sapiens_1b_epoch_173_torchscript.pt2', True)
 

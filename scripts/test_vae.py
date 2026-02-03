@@ -5,7 +5,7 @@ import os
 import kiui
 
 from core.model_config.VAE import AllConfigs
-from core.dataset.dataloader_test import ObjaverseDataset as Dataset
+from core.dataset.dataloader_test import HGS_1M as Dataset
 from accelerate import Accelerator
 from safetensors.torch import load_file
 from core.modules.DiT_utils import Load_VAE
